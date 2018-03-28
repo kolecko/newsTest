@@ -7,9 +7,13 @@ export class ArchivedService {
   archivedNews: ArchivedNew[] = [];
 
   archive(item: New) {
-    const archivedNew = item as ArchivedNew;
+    const archivedNew = new ArchivedNew(item);
     archivedNew.datetimeArchived = new Date();
     this.archivedNews.push(archivedNew);
+  }
+
+  unArchive(index: number) {
+    this.archivedNews.splice(index, 1);
   }
 
   constructor() { }

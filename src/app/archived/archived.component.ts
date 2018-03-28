@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {ArchivedNew} from './archivedNew.model';
+import {Component} from '@angular/core';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {ArchivedService} from './archived.service';
 
 @Component({
   selector: 'app-archived',
-  templateUrl: './archived.component.html',
-  styleUrls: ['./archived.component.css']
+  templateUrl: './archived.component.html'
 })
-export class ArchivedComponent implements OnInit {
-  archived: ArchivedNew[] = [];
+export class ArchivedComponent {
+  public date: NgbDateStruct;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    public archivedService: ArchivedService
+  ) {
   }
-
 }

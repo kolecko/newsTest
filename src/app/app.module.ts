@@ -12,6 +12,7 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {DatePipe} from '@angular/common';
 import {DatifyPipe} from './datify.pipe';
+import {ArchivedService} from './archived/archived.service';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import {DatifyPipe} from './datify.pipe';
     AngularFirestoreModule,
     NgbModule.forRoot()
   ],
-  providers: [DatifyPipe, DatePipe, NewsService],
+  providers: [DatifyPipe, DatePipe, NewsService, ArchivedService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

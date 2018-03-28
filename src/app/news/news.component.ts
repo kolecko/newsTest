@@ -1,39 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import {New} from './new.model';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {NewsService} from './news.service';
 import {ArchivedService} from '../archived/archived.service';
 
 @Component({
   selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  templateUrl: './news.component.html'
 })
 export class NewsComponent implements OnInit {
-  news: New[] = [];
-
-  public date: Date;
-  setDate(value: NgbDateStruct) {
-    const date = new Date();
-    date.setDate(value.day);
-    date.setMonth(value.month - 1);
-    date.setFullYear(value.year);
-
-    this.date = date;
-  }
+  public date: NgbDateStruct;
 
   constructor(
-    private _newsService: NewsService,
-    public _archivedService: ArchivedService
+    public newsService: NewsService,
+    private _archivedService: ArchivedService
   ) { }
 
-  archive(item: New) {
-    this._archivedService.achive(item);
+  archive(index: number) {
+    this._archivedService.archive(this.newsService.news[index]);
+    this.newsService.news.splice(index, 1);
   }
 
   ngOnInit() {
-    this._newsService.news
-      .subscribe(data => this.news = data);
   }
 
 }

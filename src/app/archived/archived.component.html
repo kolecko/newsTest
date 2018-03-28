@@ -1,14 +1,26 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="col-12 p-2" *ngFor="let new of archived">
+    <div class="col-12 p-2" *ngFor="let new of archivedService.archivedNews| datify; let i = index">
       <div class="card">
-        <div class="card-body">
+        <div class="card-header">
+          <button class="btn btn-outline-danger float-right" (click)="archivedService.unArchive(i)">Unarchive</button>
           <h5 class="card-title">{{new.title}}</h5>
+          <p class="text-secondary">{{new.description}}</p>
+        </div>
+        <div class="card-body">
           <p class="card-text">{{new.content}}</p>
+        </div>
+        <div class="card-footer">
+          Pridané: {{new.datetime | date:'d. M. y'}}
+          Archivované: {{new.datetimeArchived | date:'d. M. y'}}
         </div>
       </div>
     </div>
 
   </div>
+</div>
+
+<div class="mr-4 mb-4" style="position: fixed; bottom: 0; right: 0">
+  <ngb-datepicker (select)="date = $event"></ngb-datepicker>
 </div>
