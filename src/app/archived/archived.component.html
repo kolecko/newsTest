@@ -1,3 +1,14 @@
-<p>
-  archived works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-12 p-2" *ngFor="let new of archived">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{new.title}}</h5>
+          <p class="card-text">{{new.content}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

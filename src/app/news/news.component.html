@@ -1,3 +1,25 @@
-<p>
-  news works!
-</p>
+<div class="mr-4 mb-4" style="position: fixed; bottom: 0; right: 0">
+  <ngb-datepicker (select)="setDate($event)"></ngb-datepicker>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-12 p-2" *ngFor="let new of news | datify:date">
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-outline-dark float-right" (click)="archive(new)">Archive</button>
+          <h5 class="card-title">{{new.title}}</h5>
+          <p class="text-secondary">{{new.description}}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{new.content}}</p>
+        </div>
+        <div class="card-footer">
+          {{new.datetime | date:'d. M. y'}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
