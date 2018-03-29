@@ -9,6 +9,7 @@ export class DatifyPipe implements PipeTransform {
   transform(news: New[], value?: NgbDateStruct): any {
     if (value) {
       const date = new Date(0);
+      date.setHours(0);
       date.setDate(value.day);
       date.setMonth(value.month - 1);
       date.setFullYear(value.year);
