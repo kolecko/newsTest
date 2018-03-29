@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" style="margin-bottom: 300px">
 
     <div class="col-12 p-2" *ngFor="let new of archivedService.archivedNews| datify; let i = index">
       <div class="card">
@@ -21,6 +21,6 @@
   </div>
 </div>
 
-<div class="mr-4 mb-4" style="position: fixed; bottom: 0; right: 0">
+<div class="mr-4 mb-4 bg-white" style="position: fixed; bottom: 0; right: 0">
   <ngb-datepicker (select)="date = $event"></ngb-datepicker>
 </div>
