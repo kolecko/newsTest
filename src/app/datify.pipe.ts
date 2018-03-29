@@ -8,18 +8,11 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 export class DatifyPipe implements PipeTransform {
   transform(news: New[], value?: NgbDateStruct): any {
     if (value) {
-      const date = new Date();
+      const date = new Date(0);
       date.setDate(value.day);
       date.setMonth(value.month - 1);
       date.setFullYear(value.year);
-
-      news = news.filter(n => {
-        return (
-          n.datetime.getDate() === date.getDate() &&
-          n.datetime.getMonth() === date.getMonth() &&
-          n.datetime.getFullYear() === date.getFullYear()
-        );
-      });
+      news = news.filter(n => n.datetime > date.getTime() && n.datetime <= date.getTime() + 86400000);
     }
     return news;
   }

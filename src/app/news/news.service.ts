@@ -6,20 +6,13 @@ import {New} from './new.model';
 @Injectable()
 export class NewsService {
   newsObservable: Observable<any>;
-  news: New[];
+  news: New[] = [];
+
   constructor(
     private _afs: AngularFirestore
   ) {
-    this.newsObservable = _afs.collection('news').valueChanges();
-    this.newsObservable
-      .map(data => {
-        const news = data as New[];
-        news.forEach(n => {
-          n.datetime = new Date(n.datetime);
-        });
-        return news;
-      })
-      .subscribe(data => this.news = data);
+    const afsCollection = _afs.collection('news', ref => ref.orderBy('datetime', 'desc'));
+    this.newsObservable = afsCollection.valueChanges();
+    this.newsObservable.map(data => data as New[]).subscribe(data => this.news = data);
   }
-
 }

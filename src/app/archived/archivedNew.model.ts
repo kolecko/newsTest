@@ -9,5 +9,5 @@ export class ArchivedNew extends New {
     this.datetime = item.datetime;
   }
 
-  datetimeArchived?: Date;
+  datetimeArchived: number;
 }

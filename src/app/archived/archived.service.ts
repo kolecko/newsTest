@@ -8,7 +8,7 @@ export class ArchivedService {
 
   archive(item: New) {
     const archivedNew = new ArchivedNew(item);
-    archivedNew.datetimeArchived = new Date();
+    archivedNew.datetimeArchived = Date.now();
     this.archivedNews.push(archivedNew);
   }
 
